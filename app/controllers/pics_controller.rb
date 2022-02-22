@@ -1,4 +1,7 @@
 class PicsController < ApplicationController
+	
+before_action :authenticate_user!, except: %i[index]
+	
    before_action :set_pic, only: %i[show edit update destroy]
 
 
@@ -7,11 +10,11 @@ class PicsController < ApplicationController
 	end
 
 	def new
-		@pic = Pic.new
+		@pic = current_user.pics.build
 	end
 
 	def create
-		@pic = Pic.new(pic_params)
+		@pic = current_user.pics.build(pic_params)
 
 		if @pic.save
 			redirect_to @pic, notice: "Pic was sacessufuly created"
@@ -35,8 +38,8 @@ class PicsController < ApplicationController
 	end
 
 	def destroy
-		@pic.destroy
-	   redirect_to root_path, notice: 'Pic was sacessfuly dleted'
+	  @pic.destroy
+	  redirect_to root_path, notice: 'Pic was sacessfuly deleted'
 	end
 
 
