@@ -3,7 +3,7 @@ class PicsController < ApplicationController
 
 
 	def index
-		@pics = Pic.all 
+		@pics = Pic.all.order("created_at DESC")
 	end
 
 	def new
@@ -27,17 +27,24 @@ class PicsController < ApplicationController
 	end
 
 	def update
+		if @pic.update(pic_params)
+			redirect_to @pic, notice: "Pic sacessufly updated"
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
+		@pic.destroy
+	   redirect_to root_path, notice: 'Pic was sacessfuly dleted'
 	end
 
 
 	private
 
 	def set_pic
-		@pic = Pic.find(params[:id])
-    end 
+      @pic = Pic.find(params[:id])
+   end
 
 	def pic_params
 		params.require(:pic).permit(:title, :description)
