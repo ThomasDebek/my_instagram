@@ -1,7 +1,13 @@
 %h1 Show views
 
+-if @pic.image.attached?
+ = image_tag(@pic.image, style: "width: 200px")
+  
+
+
 %h1= @pic.title
 %p= @pic.description
+
 
 %p
 Pic by 
