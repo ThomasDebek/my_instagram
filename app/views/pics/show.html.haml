@@ -10,12 +10,12 @@
 
 
 %p
-Pic by 
-= current_user.email
+- if current_user
+ Pic by
+ = current_user.email
 
 %br
-
-= link_to 'Edit', edit_pic_path
-= link_to 'Back', root_path
-
-= button_to "Destroy this product", @product, method: :delete 
+- if current_user
+ = link_to 'Edit', edit_pic_path
+ = link_to 'Back', root_path
+ = button_to "Destroy this product", @product, method: :delete

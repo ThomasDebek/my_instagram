@@ -1,6 +1,6 @@
 class PicsController < ApplicationController
 
-  before_action :authenticate_user!, except: %i[index]
+  before_action :authenticate_user!, except: %i[index show]
 
   before_action :set_pic, only: %i[show edit update destroy]
 
@@ -31,7 +31,7 @@ class PicsController < ApplicationController
 
   def update
     if @pic.update(pic_params)
-      redirect_to @pic, notice: "Pic sacessufly updated"
+      redirect_to @pic, notice: "Pic successfully updated"
     else
       render 'edit'
     end
@@ -39,7 +39,7 @@ class PicsController < ApplicationController
 
   def destroy
     @pic.destroy
-    redirect_to root_path, notice: 'Pic was sacessfuly deleted'
+    redirect_to root_path, notice: 'Pic was successfully deleted'
   end
 
   private
