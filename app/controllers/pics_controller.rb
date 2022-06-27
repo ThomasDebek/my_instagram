@@ -1,56 +1,55 @@
 class PicsController < ApplicationController
-	
-before_action :authenticate_user!, except: %i[index]
-	
-   before_action :set_pic, only: %i[show edit update destroy]
 
+  before_action :authenticate_user!, except: %i[index show]
 
-	def index
-		@pics = Pic.all.order("created_at DESC")
-	end
+  before_action :set_pic, only: %i[show edit update destroy]
 
-	def new
-		@pic = current_user.pics.build
-	end
+  def index
+    @pics = Pic.all.order("created_at DESC")
 
-	def create
-		@pic = current_user.pics.build(pic_params)
+  end
 
-		if @pic.save
-			redirect_to @pic, notice: "Pic was sacessufuly created"
-		else
-			render 'new'
-		end
-	end
+  def new
+    @pic = current_user.pics.build
+  end
 
-	def show
-	end
+  def create
+    @pic = current_user.pics.build(pic_params)
 
-	def edit
-	end
+    if @pic.save
+      redirect_to @pic, notice: "Pic was sacessufuly created"
+    else
+      render 'new'
+    end
+  end
 
-	def update
-		if @pic.update(pic_params)
-			redirect_to @pic, notice: "Pic sacessufly updated"
-		else
-			render 'edit'
-		end
-	end
+  def show
+  end
 
-	def destroy
-	  @pic.destroy
-	  redirect_to root_path, notice: 'Pic was sacessfuly deleted'
-	end
+  def edit
+  end
 
+  def update
+    if @pic.update(pic_params)
+      redirect_to @pic, notice: "Pic successfully updated"
+    else
+      render 'edit'
+    end
+  end
 
-	private
+  def destroy
+    @pic.destroy
+    redirect_to root_path, notice: 'Pic was successfully deleted'
+  end
 
-	def set_pic
-      @pic = Pic.find(params[:id])
-   end
+  private
 
-	def pic_params
-		params.require(:pic).permit(:title, :description)
-	end
+  def set_pic
+    @pic = Pic.find(params[:id])
+  end
+
+  def pic_params
+    params.require(:pic).permit(:title, :description, :image)
+  end
 
 end

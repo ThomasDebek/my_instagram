@@ -1,10 +1,7 @@
-%h1 Welcome to my_instagram_app
-
-- @pics.each do |pic|
-  %h2= link_to pic.title, pic 
-
-
-
-
-
-= link_to 'New pics', new_pic_path
+.col-md-6.col-md-offset-3
+  #pics.transition-enabaled
+    - @pics.each do |pic|
+      .box.panel.panel-defaults
+        = image_tag pic.image, style: "width: 150px"
+        %h2= link_to pic.title, pic
+ 
