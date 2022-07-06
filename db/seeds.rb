@@ -5,3 +5,30 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require 'faker'
+
+
+puts "Delete User and Pics"
+Pic.delete_all
+User.delete_all
+
+puts "Generating User and Pics"
+User.create(email: 'dave@gmail.com', password: 'secret')
+User.create(email: 'john@gmail.com', password: 'secret')
+User.create(email: 'nikodem@gmail.com', password: 'secret')
+User.create(email: 'jurek@gmail.com', password: 'secret')
+User.create(email: 'maciek@gmail.com', password: 'secret')
+
+
+5.times do
+  p = Pic.create(
+    title: Faker::Commerce.unique.product_name,
+    description: Faker::Commerce.unique.product_name,
+    user_id: rand(1..5)
+  )
+
+  puts "generating - pics - #{p.title}"
+  downloaded_image = URI.open("https://source.unsplash.com/700x400/?#{p.title.split.last}")
+  p.image.attach(io: downloaded_image, filename: "mi_#{p.id}.png")
+end
