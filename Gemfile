@@ -15,10 +15,6 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'jquery-rails'
 gem 'faker'
-<<<<<<< HEAD
-
-=======
->>>>>>> 4.Testing_new_setingsss
 
 #add gems
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
