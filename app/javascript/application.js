@@ -2,4 +2,8 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "trix"
-import "@rails/actiontext"
+import 'bootstrap'
+
+import Rails from "@rails/ujs";
+Rails.start();
+

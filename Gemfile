@@ -15,7 +15,10 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'jquery-rails'
 gem 'faker'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4.Testing_new_setingsss
 
 #add gems
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
@@ -23,6 +26,8 @@ gem 'simple_form', '~> 5.1'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem "image_processing", ">= 1.2"
+gem 'masonry-rails', '~> 0.2.4'
+gem 'cssbundling-rails'
 
 # gem "redis", "~> 4.0"
 # gem "kredis"

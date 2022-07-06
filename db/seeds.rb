@@ -14,6 +14,7 @@ Pic.delete_all
 User.delete_all
 
 puts "Generating User and Pics"
+
 User.create(email: 'dave@gmail.com', password: 'secret')
 User.create(email: 'john@gmail.com', password: 'secret')
 User.create(email: 'nikodem@gmail.com', password: 'secret')
